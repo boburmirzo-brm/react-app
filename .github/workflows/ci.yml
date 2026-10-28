@@ -44,6 +44,6 @@ jobs:
             docker run -d \
               --name front \
               --restart unless-stopped \
-              -p 3002:80 \
+              -p 127.0.0.1:3003:80
               front:latest
             docker image prune -f
