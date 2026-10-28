@@ -37,13 +37,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            cd /opt/front
+            cd /opt/react-app
             git pull origin main
-            docker build -t front .
-            docker rm -f front || true
+            docker build -t react-app .
+            docker rm -f react-app || true
             docker run -d \
-              --name front \
+              --name react-app \
               --restart unless-stopped \
               -p 127.0.0.1:3003:80 \
-              front:latest
+              react-app:latest
             docker image prune -f
